@@ -17,6 +17,26 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 
+@Composable
+fun WaterStatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(16.dp)) {
+
+        if (count > 0) {
+            Text(
+                text = "You've had $count glasses of water."
+            )
+        }
+        Button(onClick = onIncrement, modifier = Modifier.padding(8.dp), enabled = count < 10) {
+            Text(text = "Add One")
+        }
+    }
+}
+
+@Composable
+fun WaterStatefullCounter(modifier: Modifier = Modifier) {
+    var count: Int  by remember { mutableStateOf(0) }
+    WaterStatelessCounter(count = count, onIncrement = { count++ })
+}
 
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
