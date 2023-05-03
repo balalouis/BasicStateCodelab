@@ -50,7 +50,7 @@ fun WaterCounter(modifier: Modifier = Modifier) {
             var showTask by remember { mutableStateOf(true) }
             if(showTask) {
                 Log.d("-----> ","Inside if show task")
-                WellnessTaskItem(modifier = Modifier, taskText = "This is a task", onClose = { showTask = false})
+//                WellnessTaskItem(modifier = Modifier, taskName = "This is a task", onClose = { showTask = false})
             }
             Log.d("-----> ","outside if show task")
             Text(
