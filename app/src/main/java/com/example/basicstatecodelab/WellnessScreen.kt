@@ -10,15 +10,20 @@ fun WellnessScreen(
     modifier: Modifier = Modifier,
     wellnessViewModel: WellnessViewModel = viewModel()
 ) {
-
     Column(modifier = modifier) {
         WaterStatefullCounter()
-
-        WellnessTaskList(list = wellnessViewModel.tasks, onCloseTask = { task ->
-            wellnessViewModel.removeTasks(
-                task
-            )
-        })
+        WellnessTaskList(
+            list = wellnessViewModel.tasks,
+            onCloseTask = { task ->
+                wellnessViewModel.removeTasks(
+                    task
+                )
+            },
+            onCheckedTask = { task, checked ->
+                wellnessViewModel.changeTaskCheckedState(
+                    task,
+                    checked
+                )
+            })
     }
-
 }
